@@ -8,15 +8,13 @@ public class CameraBehavior : MonoBehaviour
     private GameObject player;
     private float z;
 
-    void Start()
-    {
+    void Start() {
         camera = this.GetComponent<Camera>();
         player = GameObject.Find("Player");
         z = camera.transform.position.z;
     }
 
-    void Update()
-    {
+    void Update() {
         camera.transform.position = calculateCamPosition();
         // camera.transform.LookAt(player.transform);
     }

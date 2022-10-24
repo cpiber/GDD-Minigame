@@ -11,15 +11,17 @@ public class PlayerBehavior : MonoBehaviour
     private bool IsOnGround => Physics2D.IsTouchingLayers(collider, groundMask);
     private bool IsJumping = false;
 
-    void Start()
-    {
+    [SerializeField] private GameObject gun;
+    private GunBehavior gunB;
+
+    void Start() {
         rigidbody = this.GetComponent<Rigidbody2D>();
         collider = this.GetComponent<BoxCollider2D>();
         groundMask = LayerMask.GetMask("Ground");
+        gunB = gun.GetComponent<GunBehavior>();
     }
 
-    void Update()
-    {
+    void Update() {
         var moveInput = Input.GetAxis("Horizontal");
         if (!collider.IsTouchingLayers() || IsOnGround)
             rigidbody.velocity = new Vector2(moveInput * playerSpeed, rigidbody.velocity.y);
@@ -30,5 +32,8 @@ public class PlayerBehavior : MonoBehaviour
             IsJumping = true;
         }
         if (!IsOnGround) IsJumping = false;
+
+        var mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(mouseWorld.x - transform.position.x), transform.localScale.y, transform.localScale.z);
     }
 }
