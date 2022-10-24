@@ -35,5 +35,7 @@ public class PlayerBehavior : MonoBehaviour
 
         var mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(mouseWorld.x - transform.position.x), transform.localScale.y, transform.localScale.z);
+
+        if (Input.GetMouseButtonDown(0)) gunB.Shoot();
     }
 }
