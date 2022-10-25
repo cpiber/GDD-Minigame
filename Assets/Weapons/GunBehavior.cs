@@ -24,7 +24,7 @@ public class GunBehavior : MonoBehaviour
         var rot = transform.rotation;
         if (transform.parent.localScale.x < 0) rot *= Quaternion.Euler(0, 0, 180); // add 180deg to offset scale=-x
         var bullet = Instantiate(bulletPrefab, transform.position, rot);
-        var b = bullet.GetComponentInChildren<BulletBehavior>();
+        var b = bullet.GetComponent<BulletBehavior>();
         b.speed = bulletSpeed;
         b.damage = bulletDamage;
     }

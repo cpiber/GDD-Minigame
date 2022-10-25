@@ -16,6 +16,6 @@ public class BulletBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) {
         collider.gameObject.GetComponent<HealthBehavior>()?.Damage(damage);
-        Destroy(gameObject.transform.parent.gameObject); // destroy entire prefab
+        Destroy(gameObject);
     }
 }
