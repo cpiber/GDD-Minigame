@@ -4,6 +4,7 @@ using UnityEngine;
 public class ShrinkItemBehavior : MonoBehaviour
 {
     [SerializeField] private float shrinkTime = 0.5f;
+    [SerializeField] private float statIncrease = 1.1f;
     private GameObject player;
 
     void Start() {
@@ -26,6 +27,9 @@ public class ShrinkItemBehavior : MonoBehaviour
             yield return null;
         }
         player.transform.localScale = startSize / 2;
+        var pB = player.GetComponent<PlayerBehavior>();
+        pB.playerSpeed *= statIncrease;
+        pB.playerJumpForce *= statIncrease;
         Destroy(gameObject);
     }
 }

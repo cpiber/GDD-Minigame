@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    [SerializeField] private float playerSpeed = 5.0f;
-    [SerializeField] private float playerJumpForce = 5.0f;
+    [SerializeField] public float playerSpeed = 5.0f;
+    [SerializeField] public float playerJumpForce = 5.0f;
     private MovementBehavior movementB;
 
     [SerializeField] private GameObject gun;
