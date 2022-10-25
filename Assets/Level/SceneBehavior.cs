@@ -9,8 +9,10 @@ public class SceneBehavior : MonoBehaviour
     private int score;
 
     void Start() {
-        gameScoreText = gameScore.GetComponent<TMP_Text>();
-        DisplayScore();
+        if (gameScore) {
+            gameScoreText = gameScore.GetComponent<TMP_Text>();
+            DisplayScore();
+        }
     }
 
     public void PlayGame(int selected) {
@@ -27,7 +29,6 @@ public class SceneBehavior : MonoBehaviour
         var loader = SceneManager.LoadSceneAsync("TitleScene");
         loader.completed += (op) => {
             GameObject.Find("IntroText").GetComponent<TMP_Text>().text = $"You lost!\nEnemies killed: {score}";
-            score = 0;
         };
     }
 
