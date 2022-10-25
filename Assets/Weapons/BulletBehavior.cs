@@ -5,7 +5,6 @@ public class BulletBehavior : MonoBehaviour
 {
     internal float speed;
     internal int damage;
-    public UnityEvent<int> OnBulletCollision;
 
     void Start() {
         
@@ -16,7 +15,7 @@ public class BulletBehavior : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        OnBulletCollision.Invoke(damage);
+        collider.gameObject.GetComponent<HealthBehavior>()?.Damage(damage);
         Destroy(gameObject.transform.parent.gameObject); // destroy entire prefab
     }
 }
