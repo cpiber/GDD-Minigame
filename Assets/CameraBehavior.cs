@@ -10,7 +10,11 @@ public class CameraBehavior : MonoBehaviour
 
     void Start() {
         camera = this.GetComponent<Camera>();
-        player = GameObject.Find("Player");
+        var p = GameObject.Find("Player");
+        for (int i = 0; i < p.transform.childCount; ++i) {
+            player = p.transform.GetChild(i).gameObject;
+            if (player.activeSelf) break;
+        }
         z = camera.transform.position.z;
     }
 
