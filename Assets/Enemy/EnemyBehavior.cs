@@ -8,6 +8,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void Start() {
         movementB = this.GetComponent<MovementBehavior>();
+        this.GetComponent<HealthBehavior>().onDeath.AddListener(() => Destroy(gameObject));
     }
 
     void Update() {

@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  objectToKill: {fileID: 0}
   healthPrefab: {fileID: 8191432358594705380, guid: 7dc2caa49fd846ad8901df7606a869d1, type: 3}
   onDeath:
     m_PersistentCalls:

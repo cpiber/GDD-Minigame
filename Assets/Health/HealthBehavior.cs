@@ -4,14 +4,12 @@ using UnityEngine.Events;
 public class HealthBehavior : MonoBehaviour
 {
     [SerializeField] private int health = 50;
-    [SerializeField] public GameObject objectToKill;
     [SerializeField] public GameObject healthPrefab;
     private GameObject healthBar;
     private float healthPercent;
     public UnityEvent onDeath;
 
     void Start() {
-        if (!objectToKill) objectToKill = gameObject;
         var bg = Instantiate(healthPrefab);
         bg.transform.parent = transform;
         bg.transform.localPosition = bg.transform.position;
@@ -27,6 +25,5 @@ public class HealthBehavior : MonoBehaviour
         healthBar.transform.localScale = new Vector3(healthPercent * health, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
         if (health > 0) return;
         onDeath.Invoke();
-        Destroy(objectToKill);
     }
 }
