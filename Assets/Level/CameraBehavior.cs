@@ -10,7 +10,7 @@ public class CameraBehavior : MonoBehaviour
     public GameObject player;
     private float z;
     public Rect cameraRect;
-    public Vector2 cameraSize;
+    public Vector2 cameraHalfSize;
 
     void Start() {
         camera = this.GetComponent<Camera>();
@@ -20,9 +20,9 @@ public class CameraBehavior : MonoBehaviour
         var zz = ground.transform.position.z - z;
         var bl = camera.ViewportToWorldPoint(new Vector3(0, 0, zz));
         var c = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, zz));
-        cameraSize = new Vector2(c.x - bl.x, c.y - bl.y);
-        cameraRect = Rect.MinMaxRect(wallLeft.transform.position.x + cameraSize.x, ground.transform.position.y + cameraSize.y,
-                                     wallRight.transform.position.x - cameraSize.x, float.MaxValue);
+        cameraHalfSize = new Vector2(c.x - bl.x, c.y - bl.y);
+        cameraRect = Rect.MinMaxRect(wallLeft.transform.position.x + cameraHalfSize.x, ground.transform.position.y + cameraHalfSize.y,
+                                     wallRight.transform.position.x - cameraHalfSize.x, float.MaxValue);
     }
 
     void FixedUpdate() {

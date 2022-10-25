@@ -868,7 +868,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  cameraSize: {x: 0, y: 0}
+  cameraHalfSize: {x: 0, y: 0}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -899,6 +899,8 @@ MonoBehaviour:
   enemyCooldownScale: 0.85
   enemyCooldownMin: 1
   numEnemies: 5
+  shrinkItemPrefab: {fileID: 769634072616091261, guid: 2b42b206e16f7c136bc13b27011af08a, type: 3}
+  shrinkItemSpawnChance: 0.05
 --- !u!224 &646831851 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7434467623024242319, guid: 219e7c325f0351247aa5140347cc5965, type: 3}
