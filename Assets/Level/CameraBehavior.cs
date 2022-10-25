@@ -7,11 +7,10 @@ public class CameraBehavior : MonoBehaviour
     [SerializeField] private GameObject wallRight;
 
     private new Camera camera;
-    private GameObject player;
+    public GameObject player;
     private float z;
-    private float minY;
-    private float minX;
-    private float maxX;
+    public Rect cameraRect;
+    public Vector2 cameraSize;
 
     void Start() {
         camera = this.GetComponent<Camera>();
@@ -24,11 +23,10 @@ public class CameraBehavior : MonoBehaviour
 
         var zz = ground.transform.position.z - z;
         var bl = camera.ViewportToWorldPoint(new Vector3(0, 0, zz));
-        var tr = camera.ViewportToWorldPoint(new Vector3(1, 1, zz));
         var c = camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, zz));
-        minY = ground.transform.position.y + c.y - bl.y;
-        minX = wallLeft.transform.position.x + c.x - bl.x;
-        maxX = wallRight.transform.position.x - (tr.x - c.x);
+        cameraSize = new Vector2(c.x - bl.x, c.y - bl.y);
+        cameraRect = Rect.MinMaxRect(wallLeft.transform.position.x + cameraSize.x, ground.transform.position.y + cameraSize.y,
+                                     wallRight.transform.position.x - cameraSize.x, float.MaxValue);
     }
 
     void FixedUpdate() {
@@ -38,9 +36,9 @@ public class CameraBehavior : MonoBehaviour
 
     private Vector3 calculateCamPosition() {
         Vector3 focus = player.transform.position + Vector3.forward * z;
-        focus.x = Mathf.Clamp(focus.x, minX, maxX);
-        focus.y = Mathf.Max(focus.y, minY);
-        // Debug.Log($"{focus} [{minX},{maxX}] {minY}");
+        focus.x = Mathf.Clamp(focus.x, cameraRect.xMin, cameraRect.xMax);
+        focus.y = Mathf.Max(focus.y, cameraRect.yMin);
+        // Debug.Log($"{focus} {cameraRect}");
         return focus;
     }
 }
