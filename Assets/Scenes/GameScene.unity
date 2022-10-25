@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 448490464}
   m_Layer: 0
   m_Name: TallGuy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1171,7 +1171,7 @@ GameObject:
   - component: {fileID: 1774510088}
   m_Layer: 0
   m_Name: LittleIdiot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

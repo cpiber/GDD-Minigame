@@ -28,6 +28,16 @@ public class LevelBehavior : MonoBehaviour
         for (int i = 0; i < numEnemies; ++i) SpawnEnemy();
     }
 
+    public static GameObject GetPlayer() {
+        GameObject player = null;
+        var p = GameObject.Find("Player");
+        for (int i = 0; i < p.transform.childCount; ++i) {
+            player = p.transform.GetChild(i).gameObject;
+            if (player.activeSelf) break;
+        }
+        return player;
+    }
+
     void SpawnEnemy() {
         var spawnLeft = camB.player.transform.position.x >= camB.cameraRect.xMax - 20;
         // spawn space is either entire left side (just outside screen) or right side

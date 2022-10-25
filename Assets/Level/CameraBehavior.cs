@@ -14,11 +14,7 @@ public class CameraBehavior : MonoBehaviour
 
     void Start() {
         camera = this.GetComponent<Camera>();
-        var p = GameObject.Find("Player");
-        for (int i = 0; i < p.transform.childCount; ++i) {
-            player = p.transform.GetChild(i).gameObject;
-            if (player.activeSelf) break;
-        }
+        player = LevelBehavior.GetPlayer();
         z = camera.transform.position.z;
 
         var zz = ground.transform.position.z - z;
