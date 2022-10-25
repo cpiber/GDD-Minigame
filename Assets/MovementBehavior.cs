@@ -8,7 +8,7 @@ public class MovementBehavior : MonoBehaviour
     private bool IsJumping = false;
     private ContactPoint2D[] contacts = new ContactPoint2D[5];
     private new Rigidbody2D rigidbody;
-    private new BoxCollider2D collider;
+    private new Collider2D collider;
 
     enum MoveType {
         No = 0,
@@ -18,7 +18,7 @@ public class MovementBehavior : MonoBehaviour
 
     void Start() {
         rigidbody = this.GetComponent<Rigidbody2D>();
-        collider = this.GetComponent<BoxCollider2D>();
+        collider = this.GetComponent<Collider2D>();
         obstacleLayer = LayerMask.NameToLayer("Obstacles");
     }
 
@@ -62,7 +62,7 @@ public class MovementBehavior : MonoBehaviour
         if (n == contacts.Length) Debug.LogWarning($"ComputeMove: filled up collision buffer (length={n})");
         for (int i = 0; i < n; ++i) {
             if (contacts[i].normal.x <= -0.5) move &= ~(MoveType.Right); // remove possibility for right move
-            else if (contacts[i].normal.x >= -0.5) move &= ~(MoveType.Left); // remove possibility for left move
+            else if (contacts[i].normal.x >= 0.5) move &= ~(MoveType.Left); // remove possibility for left move
         }
         return move;
     }
