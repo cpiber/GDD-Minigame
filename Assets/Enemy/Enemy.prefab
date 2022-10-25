@@ -104,7 +104,7 @@ MonoBehaviour:
   enemySpeed: 5.5
   enemyJumpForce: 6
   damage: 10
-  jumpDistance: 5
+  jumpDistance: 10
 --- !u!114 &7305993546563373702
 MonoBehaviour:
   m_ObjectHideFlags: 0

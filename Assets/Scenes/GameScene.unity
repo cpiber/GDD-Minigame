@@ -240,6 +240,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4517386181542415218, guid: fb0aed77b9a344af3a159c5f9dadccf4, type: 3}
   bulletSpeed: 0.4
   bulletDamage: 7
+  cooldown: 0.1
 --- !u!212 &48393083
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -552,6 +553,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4517386181542415218, guid: fb0aed77b9a344af3a159c5f9dadccf4, type: 3}
   bulletSpeed: 0.5
   bulletDamage: 10
+  cooldown: 0.2
 --- !u!1 &448490461
 GameObject:
   m_ObjectHideFlags: 0
