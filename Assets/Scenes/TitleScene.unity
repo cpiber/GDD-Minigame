@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bobTimer: 0.8
-  bobDistance: 0.2
+  bobDistance: 10
 --- !u!1 &458055707
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bobTimer: 0.8
-  bobDistance: 0.2
+  bobDistance: 10
 --- !u!1 &1845877611
 GameObject:
   m_ObjectHideFlags: 0
